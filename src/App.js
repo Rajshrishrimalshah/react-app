@@ -6,16 +6,6 @@ import { WebSocketLink } from "apollo-link-ws";
 import { HttpLink } from "apollo-link-http";
 import { split } from "apollo-link";
 import { getMainDefinition } from "apollo-utilities";
-// import { InMemoryCache } from "apollo-cache-inmemory";
-
-import "./App.css";
-import Greet from "./components/Greet";
-import Welcome from "./components/Welcome";
-import Hello from "./components/Hello";
-import Message from "./components/Message";
-import Counter from "./components/Counter";
-import MutationApollo from "./components/MutationApollo";
-import QueryApollo from "./components/QueryApollo";
 
 const httpLink = new HttpLink({
   uri: "http://localhost:9000/graphql" // use https for secure endpoint
@@ -46,24 +36,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        {/* <Greet name="Aniket">
-        <p> This is paragraph for 1st component </p>
-      </Greet>
-      <Greet name="Mayank" />
-      <Greet name="John" />
-
-      <Welcome name="RAJ">
-        <p> This is paragraph for 1st component </p>
-      </Welcome>
-      <Welcome name="GANESH" />
-      <Welcome name="ONKAR" /> */}
-        {/* <Welcome /> */}
-        {/* <Hello /> */}
-        {/* <Message /> */}
-        {/* <Counter /> */}
-        <QueryApollo />
-        <MutationApollo />
-        <Greet />
+        {/* <QueryApollo />
+        <MutationApollo /> */}
       </div>
     </ApolloProvider>
   );

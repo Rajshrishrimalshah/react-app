@@ -22,7 +22,7 @@ const MutationApollo = () => (
             onClick={e => {
               e.preventDefault();
               createUser({
-                variables: { id: 14, username: "Hangout APP" }
+                variables: { id: 22, username: "Ganesh" }
               });
             }}
           >
