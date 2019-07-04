@@ -7,6 +7,11 @@ import { HttpLink } from "apollo-link-http";
 import { split } from "apollo-link";
 import { getMainDefinition } from "apollo-utilities";
 
+import Form from "./components/Form";
+import LifeCycleA from "./components/LifeCycleA";
+import QueryApollo from "./components/Apollo-Client/QueryApollo";
+import MutationApollo from "./components/Apollo-Client/MutationApollo";
+
 const httpLink = new HttpLink({
   uri: "http://localhost:9000/graphql" // use https for secure endpoint
 });
@@ -36,8 +41,11 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        {/* <QueryApollo />
-        <MutationApollo /> */}
+        <QueryApollo />
+        <MutationApollo />
+
+        {/* <Form /> */}
+        {/* <LifeCycleA /> */}
       </div>
     </ApolloProvider>
   );

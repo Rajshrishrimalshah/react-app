@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import { Query } from "react-apollo";
 import { gql } from "apollo-boost";
@@ -25,11 +26,24 @@ export class QueryApollo extends Component {
     subscribeToMore({
       document: this.USERS_SUB,
       updateQuery: (prev, { subscriptionData }) => {
-        console.log("prev--> prev", prev.users);
-        console.log("subscriptionData -->", subscriptionData);
-        console.log(`New User added:- `, subscriptionData.data.newUserAdded);
+        if (!subscriptionData.data) return prev;
+        const user = {
+          users: [...prev.users, { ...subscriptionData.data.newUserAdded }]
+        };
 
-        return subscriptionData.data.newUserAdded;
+        // console.log(`All Users :- `, users);
+        // console.log(prev);
+        //console.log(subscriptionData);
+        console.log(`New User added:- `, subscriptionData.data.newUserAdded);
+        console.log("Old Users in List", prev);
+
+        const newFeedItem = subscriptionData.data.newUserAdded;
+        const free = {
+          users: [...prev.users, newFeedItem]
+        };
+
+        console.log("Free", free);
+        return free;
       }
     });
   };
