@@ -12,6 +12,7 @@ import LifeCycleA from "./components/LifeCycleA";
 import QueryApollo from "./components/Apollo-Client/QueryApollo";
 import MutationApollo from "./components/Apollo-Client/MutationApollo";
 
+let id = 2;
 const httpLink = new HttpLink({
   uri: "http://localhost:9000/graphql" // use https for secure endpoint
 });
@@ -35,7 +36,16 @@ const link = split(
 
 const client = new ApolloClient({
   link,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  resolvers: {
+    Mutation: {
+      createUser: async (_, { username }, { cache, getCacheKey }) => {
+        //await cache.writeData({ data: [{ users: username }] });
+        await cache.writeData({ data: [{ users: id, username }] });
+        id++;
+      }
+    }
+  }
 });
 function App() {
   return (
