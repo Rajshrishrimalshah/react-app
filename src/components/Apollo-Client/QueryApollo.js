@@ -31,19 +31,7 @@ export class QueryApollo extends Component {
           users: [...prev.users, { ...subscriptionData.data.newUserAdded }]
         };
 
-        // console.log(`All Users :- `, users);
-        // console.log(prev);
-        //console.log(subscriptionData);
-        console.log(`New User added:- `, subscriptionData.data.newUserAdded);
-        console.log("Old Users in List", prev);
-
-        const newFeedItem = subscriptionData.data.newUserAdded;
-        const free = {
-          users: [...prev.users, newFeedItem]
-        };
-
-        console.log("Free", free);
-        return free;
+        return user;
       }
     });
   };
@@ -55,7 +43,6 @@ export class QueryApollo extends Component {
           {({ loading, error, data, subscribeToMore }) => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error ...</p>;
-            console.log("DATA QUERY--->", data);
 
             this.subscribeToNewLinks(subscribeToMore);
             return (

@@ -43,8 +43,6 @@ export class MutationApollo extends Component {
     return (
       <Mutation mutation={USERS_MUTATE}>
         {(createUser, { data }) => {
-          console.log("DATA Mutation--->", data);
-
           return (
             <div style={{ textAlign: "center" }}>
               <label> Username </label>
