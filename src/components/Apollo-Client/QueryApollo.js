@@ -60,9 +60,9 @@ export class QueryApollo extends Component {
             this.subscribeToNewLinks(subscribeToMore);
             return (
               <ul>
-                {data.users.map(({ id, username }) => (
-                  <li key={id}>{username}</li>
-                ))}
+                {data.users.map(({ id, username }) =>
+                  username !== "" ? <li key={id}>{username}</li> : ""
+                )}
               </ul>
             );
           }}

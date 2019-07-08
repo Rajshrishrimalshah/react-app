@@ -26,6 +26,17 @@ export class MutationApollo extends Component {
     });
   };
 
+  handleSubmit = (event, createUser) => {
+    const { username } = this.state;
+
+    event.preventDefault();
+    createUser({
+      variables: {
+        username
+      }
+    });
+  };
+
   render() {
     const { username } = this.state;
 
@@ -47,14 +58,8 @@ export class MutationApollo extends Component {
               <br />
               <br />
               <button
-                onClick={event => {
-                  event.preventDefault();
-                  createUser({
-                    variables: {
-                      username
-                    }
-                  });
-                }}
+                disabled={username === "" ? true : false}
+                onClick={e => this.handleSubmit(e, createUser)}
               >
                 Add User
               </button>
