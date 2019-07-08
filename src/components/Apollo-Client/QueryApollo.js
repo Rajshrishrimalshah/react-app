@@ -6,7 +6,7 @@ import SubscriptionApollo from "./SubscriptionApollo";
 export class QueryApollo extends Component {
   USERS_QUERY = gql`
     query {
-      users {
+      users @client {
         id
         username
       }
@@ -20,11 +20,12 @@ export class QueryApollo extends Component {
           {({ loading, error, data, subscribeToMore }) => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error ...</p>;
-
+            console.log(data.users);
+            // return <h1> JJs</h1>;
             return (
               <SubscriptionApollo
                 subscribeToMore={subscribeToMore}
-                data={data}
+                data={data.users ? data.users : []}
               />
             );
           }}

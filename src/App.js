@@ -41,8 +41,11 @@ const client = new ApolloClient({
     Mutation: {
       createUser: async (_, { username }, { cache, getCacheKey }) => {
         //await cache.writeData({ data: [{ users: username }] });
-        await cache.writeData({ data: [{ users: id, username }] });
-        id++;
+        // cache.writeData({ data: [{ users: temp }] });
+        // let users = [{ id: 1, username: "Test" }];
+        await cache.writeData({
+          data: { users: [{ id: 1, username, __typename: "createUser" }] }
+        });
       }
     }
   }

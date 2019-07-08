@@ -29,7 +29,7 @@ class SubscriptionApollo extends Component {
     return (
       <div>
         <ul>
-          {data.users.map(({ id, username }) =>
+          {data.map(({ id, username }) =>
             username !== "" ? <li key={id}>{username}</li> : ""
           )}
         </ul>

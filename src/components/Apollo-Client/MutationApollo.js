@@ -4,7 +4,7 @@ import { Mutation } from "react-apollo";
 
 const USERS_MUTATE = gql`
   mutation createUser($username: String) {
-    createUser(username: $username) {
+    createUser(username: $username) @client {
       id
       username
     }
